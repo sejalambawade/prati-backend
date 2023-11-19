@@ -14,8 +14,10 @@ import MonoAct from './components/Mono-act';
 import  MrandMs from './components/MrandMs';
 import  SemiClassical from './components/semi-classical';
 import Band from './components/band';
+import LoginForm from './components/login';
 import Btn from './components/btns';
 import React, { useState } from 'react';
+
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/GroupDance",
     element: <EventForm></EventForm>,
+  },
+  {
+    path: "/login",
+    element: <LoginForm></LoginForm>,
   },
   {
   path: "/StandUp",

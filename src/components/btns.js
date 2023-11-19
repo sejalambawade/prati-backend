@@ -12,6 +12,7 @@ export default function btn() {
    <Link to="/SoloSinging"  type="button" class="btn btn-success">Solo-Singing</Link>
    <Link to="/Mr&Ms"  type="button" class="btn btn-danger">Mr. and Ms.</Link>
    <Link to="/Western-duet" type="button" class="btn btn-info">Western-duet</Link>
+   <Link to="/login" type="button" class="btn btn-info">login</Link>
 <button type="button" class="btn btn-link">Link</button>
 </div>
     </>

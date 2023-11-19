@@ -53,10 +53,39 @@ db.query("USE prati_website_2023;", function (err, result) {
   //   }
 
   // });
-     db.query("CREATE TABLE GroupDance (TeamName varchar(200),participantNumber int,participantName varchar(100),college_ID varchar(255));", function(err, result) {
-    if (err) throw err;
-    console.log("Table created!");  
+  //   db.query("CREATE TABLE MrAndMs (Name_1 varchar(200),College_ID_1 varchar(255),Name_2 varchar(200),College_ID_2 varchar(255));", function(err, result) {
+  //   if (err) throw err;
+  //   console.log("Mrs and MS table created!");  
+  // })
+  //    db.query("CREATE TABLE GroupDance (TeamName varchar(200),participantNumber int,participantName varchar(100),college_ID varchar(255));", function(err, result) {
+  //   if (err) throw err;
+  //   console.log("Table created!");  
+  // })
+    //    db.query("CREATE TABLE Band (TeamName varchar(200),participantNumber int,participantName varchar(100),college_ID varchar(255));", function(err, result) {
+    // if (err) throw err;
+    // console.log("Table created!");  
   })
+  app.post('/AddMrAndMs', (req, res) => {
+    const {  participants } = req.body;
+    console.log(req.body, event);
+
+ 
+        console.log(participants[i].name, participants[i].collegeId);
+        const sql = `INSERT INTO MrsAndMs (Name_1, College_ID_1,Name_2, College_ID_2) VALUES (?, ?, ?, ?);`;
+        db.query(sql, [participants[0].name, participants[0].collegeId,participants[1].name, participants[1].collegeId], (err, result) => {
+            if (err) {
+                console.error('Error:', err.message);
+                return res.status(500).send('Internal Server Error');
+            }
+
+            console.log('Team added to the table');
+            // You can choose to do something after each insertion if needed
+        });
+    
+
+    // Send a single response after all iterations are complete
+    res.status(200).send('Participants added successfully');
+});
   app.post('/:event/addteam', (req, res) => {
     const { event } = req.params;
     const { teamName, participantNumber, participants } = req.body;
@@ -114,7 +143,7 @@ app.post('/:event/addParticipant', (req, res) => {
   });
 });
 
-});
+
 app.listen(9000, () => {
   console.log(`Server is running on port 3906`);
 });

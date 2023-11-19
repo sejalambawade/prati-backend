@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import "../css/events.css"
 
 export default function TextForm(props) {
     const setupperCase=()=>{

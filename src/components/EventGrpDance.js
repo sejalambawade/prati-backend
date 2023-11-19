@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image from "../images/grpdance2.jpg"; 
 import axios from 'axios';
+import "../css/events.css"
 export default function EventForm() {
     const [participantName, setParticipantName] = useState('');
     const [teamName, setTeamName] = useState('');
@@ -80,7 +81,7 @@ export default function EventForm() {
             <section className="registration-form">
                 <div className='main'>
                 <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
-                    <h2 id='info-title' >A quick go through before you register</h2>
+                    <h2 className='infotitle infotitle--shadow' >A quick go through before you register</h2>
                       <ul className='ulimg'>
         
                         <li className=''>Rules:WebFree. Welcome to CodePen. Sign Up with Google. Sign Up with GitHub. Sign Up with Facebook. </li>
@@ -91,8 +92,10 @@ export default function EventForm() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
+                  <div id="titleform">
                 <h2>Nachne De Sare</h2>
                 <h3 id='title2'>~Burn the stage together</h3>
+                </div>
                 <div className='input-label'>
                     <input
                         type="text"
@@ -105,15 +108,20 @@ export default function EventForm() {
                    <label htmlFor="team-name" className='l2'>Team Name</label>
                     </div>
                     <div className='input-label'>
-                      <input
-                        type="text"
-                        id="participant-number"
-                        name="participant-number"
-                        value={participantNumber}
-                        onChange={(e) => { setParticipantNumber(e.target.value);}}
-                        required
-                      />
-                      <label htmlFor="participant-number" className='l2'>Participant Number</label>
+                    <select
+    id="participant-number"
+    name="participant-number"
+    value={participantNumber}
+    onChange={(e) => setParticipantNumber(e.target.value)}
+    required
+  >
+    {[...Array(15).keys()].map((num) => (
+      <option key={num + 1} value={(num + 1).toString()}>
+        {num + 1}
+      </option>
+    ))}
+  </select>
+                      <label id="grpNo" htmlFor="participant-number" className='l2'>Participant Number</label>
                     </div>
                  
                     {renderParticipantFields()}
